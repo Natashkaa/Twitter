@@ -1,0 +1,14 @@
+C:\Users\Natashka\Desktop\Twitter\bin\Debug\netcoreapp2.2\Twitter.deps.json
+C:\Users\Natashka\Desktop\Twitter\bin\Debug\netcoreapp2.2\Twitter.runtimeconfig.json
+C:\Users\Natashka\Desktop\Twitter\bin\Debug\netcoreapp2.2\Twitter.runtimeconfig.dev.json
+C:\Users\Natashka\Desktop\Twitter\bin\Debug\netcoreapp2.2\Twitter.dll
+C:\Users\Natashka\Desktop\Twitter\bin\Debug\netcoreapp2.2\Twitter.pdb
+C:\Users\Natashka\Desktop\Twitter\obj\Debug\netcoreapp2.2\Twitter.csprojAssemblyReference.cache
+C:\Users\Natashka\Desktop\Twitter\obj\Debug\netcoreapp2.2\Twitter.csproj.CoreCompileInputs.cache
+C:\Users\Natashka\Desktop\Twitter\obj\Debug\netcoreapp2.2\Twitter.RazorAssemblyInfo.cache
+C:\Users\Natashka\Desktop\Twitter\obj\Debug\netcoreapp2.2\Twitter.RazorAssemblyInfo.cs
+C:\Users\Natashka\Desktop\Twitter\obj\Debug\netcoreapp2.2\Twitter.AssemblyInfoInputs.cache
+C:\Users\Natashka\Desktop\Twitter\obj\Debug\netcoreapp2.2\Twitter.AssemblyInfo.cs
+C:\Users\Natashka\Desktop\Twitter\obj\Debug\netcoreapp2.2\Twitter.RazorTargetAssemblyInfo.cache
+C:\Users\Natashka\Desktop\Twitter\obj\Debug\netcoreapp2.2\Twitter.dll
+C:\Users\Natashka\Desktop\Twitter\obj\Debug\netcoreapp2.2\Twitter.pdb

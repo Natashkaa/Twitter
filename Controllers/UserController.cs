@@ -2,14 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Twitter.Domain.Models;
+using Twitter.Domain.Services;
+using Twitter.Extensions;
+using Twitter.Resources;
 
 namespace Twitter.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class UserController : ControllerBase
     {
+        private readonly IUserService userService;
+        private readonly IMapper mapper;
+        public UserController(IUserService userService, IMapper mapper)
+        {
+            this.userService = userService;
+            this.mapper = mapper;
+        }
+        
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
@@ -19,9 +32,12 @@ namespace Twitter.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            var response = await userService.GetUserAsync(id);
+            var resource = mapper.Map<User, UserResource>(response.User);
+            var res = response.GetResponseResult(resource);
+            return Ok(res);
         }
 
         // POST api/values
