@@ -10,6 +10,6 @@ namespace Twitter.Resources
         public DateTime Birth { get; set; }
         public DateTime Registration_date { get; set; }
         public string Photo_path { get; set; }
-        public string Token;
+        public string Token { get; set; }
     }
 }

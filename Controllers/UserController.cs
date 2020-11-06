@@ -23,14 +23,14 @@ namespace Twitter.Controllers
             this.mapper = mapper;
         }
         
-        // GET api/values
+        // GET api/user
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
+        // GET api/user/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -40,19 +40,28 @@ namespace Twitter.Controllers
             return Ok(res);
         }
 
-        // POST api/values
+        // POST api/user
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> AddUserAsync([FromBody] SaveUserResource newUser)
         {
+            var user = mapper.Map<SaveUserResource, User>(newUser);
+            user.Birth = Convert.ToDateTime(newUser.Birth);
+            user.Registration_date = DateTime.Now;
+
+            var response = await userService.AddUserAsync(user);
+            
+            var userResource = mapper.Map<User, UserResource>(response.User);
+            var result = response.GetResponseResult(userResource);
+            return Ok(result);
         }
 
-        // PUT api/values/5
+        // PUT api/user/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/values/5
+        // DELETE api/user/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

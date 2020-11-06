@@ -9,6 +9,7 @@ namespace Twitter.Mapping
         public MappToModel()
         {
             CreateMap<UserResource, User>();
+            CreateMap<SaveUserResource, User>();
         }
     }
 }

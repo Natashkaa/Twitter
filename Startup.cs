@@ -12,10 +12,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Twitter.Domain.Models;
 using Twitter.Domain.Repositories;
 using Twitter.Domain.Services;
 using Twitter.RealizationAndContext;
 using Twitter.RealizationAndContext.Repositories;
+using Twitter.Resources;
 using Twitter.Services;
 
 namespace Twitter
@@ -32,7 +34,9 @@ namespace Twitter
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options =>{
+                options.Filters.Add(new ConsumesAttribute("application/json"));
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             //DATABASE
             var connection = @"data source=DESKTOP-JQDJF79\SQLEXPRESS;initial catalog=Twitter;integrated security=True;MultipleActiveResultSets=True";
             services.AddEntityFrameworkSqlServer().AddDbContext<TwitterDbContext>(options => options.UseSqlServer(connection));
@@ -42,8 +46,11 @@ namespace Twitter
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddCors();
+
+            
         
         }
 

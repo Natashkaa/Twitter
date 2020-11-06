@@ -9,14 +9,25 @@ namespace Twitter.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository userRepository;
-
-        public UserService(IUserRepository userRepository)
+        private readonly IUnitOfWork unitOfWork;
+        public UserService(IUserRepository userRepository, IUnitOfWork uow)
         {
             this.userRepository = userRepository;
+            this.unitOfWork = uow;
         }
-        public Task<UserResponse> AddUserAsync(User user)
+        public async Task<UserResponse> AddUserAsync(User user)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                await userRepository.AddUserAsync(user);
+                await unitOfWork.CompleteAsync();
+                return new UserResponse(user);
+            }
+            catch (System.Exception ex)
+            {
+                return new UserResponse($"Cannot add this user: {ex.Message}");
+            }
+            
         }
 
         public async Task<UserResponse> GetUserAsync(int id)

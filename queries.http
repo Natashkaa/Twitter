@@ -1,1 +1,11 @@
-GET http://localhost:5000/api/user/1
+//GET http://localhost:5000/api/user/1
+
+# POST http://localhost:5000/api/user
+# Content-Type: application/json
+
+# {
+#     "Full_Name": "Test4",
+#     "User_Login": "test4",
+#     "Birth": "04/04/2000",
+#     "User_Password": "test4",
+# }
