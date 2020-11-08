@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Twitter.Domain.Communication;
 using Twitter.Domain.Models;
@@ -28,6 +29,11 @@ namespace Twitter.Services
                 return new UserResponse($"Cannot add this user: {ex.Message}");
             }
             
+        }
+
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            return await userRepository.GetAllUsersAsync();
         }
 
         public async Task<UserResponse> GetUserAsync(int id)

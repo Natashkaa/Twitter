@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Twitter.Domain.Models;
@@ -12,6 +13,11 @@ namespace Twitter.RealizationAndContext.Repositories
         public async Task AddUserAsync(User user)
         {
             await context.Users.AddAsync(user);
+        }
+
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            return await context.Users.ToListAsync();
         }
 
         public async Task<User> GetUserAsync(int id)

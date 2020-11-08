@@ -28,7 +28,7 @@ namespace Twitter.Domain.Models
         [Column(TypeName = "datetime")]
         public DateTime Registration_date { get; set; }
 
-        [Required]
+        
         [StringLength(50)]
         public string Photo_path { get; set; }
 
