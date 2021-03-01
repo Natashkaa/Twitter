@@ -44,6 +44,10 @@ namespace Twitter.RealizationAndContext
                         .Property(p => p.Photo_path)
                         .IsUnicode(false);
 
+            modelBuilder.Entity<User>()
+                        .Property(p => p.User_Email)
+                        .IsUnicode(false);
+
             modelBuilder.Entity<Tweet>()
                         .Property(p => p.Tweet_description)
                         .IsUnicode(false);

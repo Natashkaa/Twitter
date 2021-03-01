@@ -31,6 +31,8 @@ namespace Twitter.Domain.Models
         
         [StringLength(50)]
         public string Photo_path { get; set; }
+        [StringLength(50)]
+        public string User_Email { get; set; }
 
         [NotMapped]
         public virtual ICollection<Tweet> Tweets { get; set; }

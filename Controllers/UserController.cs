@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Twitter.Domain.Communication;
 using Twitter.Domain.Models;
 using Twitter.Domain.Services;
 using Twitter.Extensions;
@@ -44,6 +46,17 @@ namespace Twitter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddUserAsync([FromBody] SaveUserResource newUser)
         {
+            //here need to check user email using regexp
+            string regExpForemail = @"^("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+\=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@)(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17})$";
+            if(!Regex.IsMatch(newUser.User_Email, regExpForemail, RegexOptions.IgnoreCase))
+            {
+                Console.WriteLine("user email is " + newUser.User_Email);
+                var errorResponse = new UserResponse("Invalid Email");
+                var mapperUser = mapper.Map<User, UserResource>(errorResponse.User);
+                var res = errorResponse.GetResponseResult(mapperUser);
+                return Ok(res);
+            }
+            //
             var user = mapper.Map<SaveUserResource, User>(newUser);
             user.Birth = Convert.ToDateTime(newUser.Birth);
             user.Registration_date = DateTime.Now;

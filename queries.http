@@ -10,21 +10,22 @@
 #     "User_Password": "test4",
 # }
 
-# POST http://localhost:5000/api/user
-# Content-Type: application/json
-
-# {
-#     "Full_Name": "Test4",
-#     "User_Login": "test4",
-#     "Birth": "04/04/2000",
-#     "User_Password": "test4",
-# }
-
-
-POST https://localhost:5001/api/authenticate/auth
+POST http://localhost:5000/api/user
 Content-Type: application/json
 
 {
-    "User_Login": "natasha",
-    "User_Password": "enot98"
+    "Full_Name": "Testt1March",
+    "User_Login": "Testt1March",
+    "User_Email": "testt1march@gmail.com",
+    "Birth": "4/4/2000",
+    "User_Password": "test4",
 }
+
+
+# POST https://localhost:5001/api/authenticate/auth
+# Content-Type: application/json
+
+# {
+#     "User_Login": "natasha",
+#     "User_Password": "enot98"
+# }
